@@ -1,5 +1,3 @@
-'use client'
+"use client";
 
-export default function SellerApp() {
-return (<div>hola </div>);
-}
+export { SellerAppClient as default } from "./SellerAppClient";
