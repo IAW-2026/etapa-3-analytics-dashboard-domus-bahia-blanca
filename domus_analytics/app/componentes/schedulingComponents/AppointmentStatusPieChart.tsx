@@ -39,12 +39,12 @@ export default function AppointmentStatusPieChart({
         </p>
       </div>
 
-      <div className="relative h-72">
-        <div className="pointer-events-none absolute left-1/2 top-[43%] z-10 -translate-x-1/2 -translate-y-1/2 text-center">
-          <p className="text-3xl font-bold leading-none text-domus-text">
+      <div className="relative h-72 sm:h-80">
+        <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-2/3 text-center">
+          <p className="text-2xl font-bold leading-none text-domus-text sm:text-3xl">
             {total}
           </p>
-          <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-domus-textSoft">
+          <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-domus-textSoft sm:text-xs">
             turnos
           </p>
         </div>
@@ -54,8 +54,8 @@ export default function AppointmentStatusPieChart({
               data={data}
               dataKey="count"
               nameKey="label"
-              innerRadius={58}
-              outerRadius={96}
+              innerRadius="45%"
+              outerRadius="72%"
               paddingAngle={3}
               animationDuration={850}
               animationEasing="ease-out"
@@ -68,7 +68,7 @@ export default function AppointmentStatusPieChart({
               ))}
             </Pie>
             <Tooltip />
-            <Legend />
+            <Legend wrapperStyle={{ fontSize: 12 }} />
           </PieChart>
         </ResponsiveContainer>
       </div>

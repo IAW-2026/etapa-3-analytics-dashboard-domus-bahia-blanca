@@ -12,7 +12,7 @@ export const chartColors = {
 };
 
 export const cardClassName =
-  "rounded-2xl border border-border/60 bg-card p-6 shadow-soft";
+  "min-w-0 rounded-2xl border border-border/60 bg-card p-4 shadow-soft sm:p-6";
 
 export const chartThemeStyle = {
   "--primary": "63 91 75",

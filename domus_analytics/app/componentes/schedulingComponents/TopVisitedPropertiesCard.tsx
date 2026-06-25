@@ -36,9 +36,9 @@ export default function TopVisitedPropertiesCard({
             return (
               <li
                 key={property.propertyId}
-                className="rounded-2xl border border-domus-secondary bg-white p-4"
+                className="min-w-0 rounded-2xl border border-domus-secondary bg-white p-3 sm:p-4"
               >
-                <div className="flex items-start gap-3">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
                   <div
                     className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white"
                     style={{ backgroundColor: chartColors.primary }}
@@ -47,20 +47,20 @@ export default function TopVisitedPropertiesCard({
                   </div>
 
                   <div className="min-w-0 flex-1">
-                    <div className="flex flex-wrap items-start justify-between gap-2">
-                      <div className="min-w-0">
-                        <h3 className="flex items-center gap-2 truncate text-sm font-bold text-domus-text">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                      <div className="min-w-0 flex-1">
+                        <h3 className="flex min-w-0 items-start gap-2 text-sm font-bold leading-snug text-domus-text">
                           <Home className="h-4 w-4 shrink-0 text-domus-primary" />
-                          {property.title}
+                          <span className="min-w-0 break-words">{property.title}</span>
                         </h3>
-                        <p className="mt-1 flex items-center gap-1.5 text-xs text-domus-textSoft">
+                        <p className="mt-1 flex min-w-0 items-start gap-1.5 text-xs leading-snug text-domus-textSoft">
                           <MapPin className="h-3.5 w-3.5 shrink-0" />
-                          {property.address ?? property.propertyId}
+                          <span className="min-w-0 break-words">{property.address ?? property.propertyId}</span>
                         </p>
                       </div>
 
                       <span
-                        className="rounded-full px-3 py-1 text-xs font-bold"
+                        className="w-fit shrink-0 rounded-full px-3 py-1 text-xs font-bold sm:ml-3"
                         style={{
                           backgroundColor: chartColors.accent,
                           color: chartColors.primary,

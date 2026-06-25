@@ -24,7 +24,7 @@ export default function AgentCountCard({ count }: AgentCountCardProps) {
         </div>
       </div>
 
-      <p className="mt-8 text-center text-6xl font-bold leading-none text-domus-primary">
+      <p className="mt-6 text-center text-5xl font-bold leading-none text-domus-primary sm:mt-8 sm:text-6xl">
         {count}
       </p>
     </section>

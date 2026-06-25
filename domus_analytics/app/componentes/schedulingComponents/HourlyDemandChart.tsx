@@ -28,12 +28,12 @@ export default function HourlyDemandChart({ data }: HourlyDemandChartProps) {
         </p>
       </div>
 
-      <div className="h-72">
+      <div className="h-56 sm:h-64 lg:h-72">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} margin={{ top: 8, right: 8, left: -20, bottom: 0 }}>
+          <BarChart data={data} margin={{ top: 8, right: 4, left: -28, bottom: 0 }}>
             <CartesianGrid stroke={chartColors.grid} vertical={false} />
-            <XAxis dataKey="hour" tickLine={false} axisLine={false} />
-            <YAxis allowDecimals={false} tickLine={false} axisLine={false} />
+            <XAxis dataKey="hour" tickLine={false} axisLine={false} tick={{ fontSize: 11 }} />
+            <YAxis allowDecimals={false} tickLine={false} axisLine={false} tick={{ fontSize: 11 }} />
             <Tooltip cursor={{ fill: chartColors.accent }} />
             <Bar
               dataKey="count"

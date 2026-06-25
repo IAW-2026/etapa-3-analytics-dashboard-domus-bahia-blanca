@@ -36,12 +36,12 @@ export default function SchedulingApp({
   topVisitedProperties,
 }: SchedulingAppProps) {
   return (
-    <div className="space-y-6">
-      <div>
+    <div className="min-w-0 space-y-5 sm:space-y-6">
+      <div className="min-w-0">
         <p className="text-sm font-semibold uppercase tracking-[0.18em] text-domus-primary">
           Scheduling app
         </p>
-        <h1 className="mt-2 text-3xl font-bold text-domus-text">
+        <h1 className="mt-2 text-2xl font-bold leading-tight text-domus-text sm:text-3xl">
           Panel de analiticas de visitas
         </h1>
         <p className="mt-2 max-w-3xl text-domus-textSoft">
@@ -50,7 +50,7 @@ export default function SchedulingApp({
         </p>
       </div>
 
-      <div className="grid gap-6 xl:grid-cols-2">
+      <div className="grid min-w-0 gap-5 xl:grid-cols-2 xl:gap-6">
         <HourlyDemandChart data={hourlyDemand} />
         <WeekdayDemandChart data={weekdayDemand} />
       </div>
@@ -62,7 +62,7 @@ export default function SchedulingApp({
 
       <TopVisitedPropertiesCard data={topVisitedProperties} />
 
-      <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
+      <div className="grid min-w-0 gap-5 lg:grid-cols-[0.85fr_1.15fr] lg:gap-6">
         <AgentCountCard count={agentCount} />
         <AppointmentStatusPieChart data={lastMonthAppointmentsByStatus} />
       </div>

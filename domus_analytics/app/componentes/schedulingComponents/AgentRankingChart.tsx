@@ -32,7 +32,7 @@ export default function AgentRankingChart({
         </p>
       </div>
 
-      <div className="grid gap-8 lg:grid-cols-2">
+      <div className="grid min-w-0 gap-6 lg:grid-cols-2 lg:gap-8">
         <RankingBlock title="Mes actual" data={monthData} color={chartColors.primary} />
         <RankingBlock title="Año actual" data={yearData} color={chartColors.primarySoft} />
       </div>
@@ -50,23 +50,24 @@ function RankingBlock({
   color: string;
 }) {
   return (
-    <div>
+    <div className="min-w-0">
       <h3 className="mb-3 text-sm font-semibold text-domus-textSoft">{title}</h3>
-      <div className="h-64">
+      <div className="h-56 sm:h-64">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={data}
             layout="vertical"
-            margin={{ top: 4, right: 16, left: 72, bottom: 4 }}
+            margin={{ top: 4, right: 8, left: 24, bottom: 4 }}
           >
             <CartesianGrid stroke={chartColors.grid} horizontal={false} />
-            <XAxis type="number" allowDecimals={false} tickLine={false} axisLine={false} />
+            <XAxis type="number" allowDecimals={false} tickLine={false} axisLine={false} tick={{ fontSize: 11 }} />
             <YAxis
               type="category"
               dataKey="agentName"
-              width={120}
+              width={92}
               tickLine={false}
               axisLine={false}
+              tick={{ fontSize: 11 }}
             />
             <Tooltip cursor={{ fill: chartColors.accent }} />
             <Bar
