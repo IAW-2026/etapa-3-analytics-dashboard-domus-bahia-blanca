@@ -46,7 +46,7 @@ export default function SchedulingApp({
         </h1>
         <p className="mt-2 max-w-3xl text-domus-textSoft">
           Metricas operativas para entender demanda horaria, dias fuertes,
-          desempeno de agentes y estado reciente de los turnos.
+          desempeño de agentes y estado reciente de los turnos.
         </p>
       </div>
 
