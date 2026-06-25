@@ -3,13 +3,20 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { UserButton, useUser } from "@clerk/nextjs";
+import {
+  LayoutDashboard,
+  ShoppingBag,
+  CreditCard,
+  Calendar,
+  MessageSquare,
+} from "lucide-react";
 
 const tabs = [
-  { label: "BuyerApp", href: "/dashboard/buyer-app" },
-  { label: "SellerApp", href: "/dashboard/seller-app" },
-  { label: "PaymentsApp", href: "/dashboard/payments-app" },
-  { label: "SchedulingApp", href: "/dashboard/scheduling-app" },
-  { label: "FeedbackApp", href: "/dashboard/feedback-app" },
+  { label: "BuyerApp", href: "/dashboard/buyer-app", icon: ShoppingBag },
+  { label: "SellerApp", href: "/dashboard/seller-app", icon: LayoutDashboard },
+  { label: "PaymentsApp", href: "/dashboard/payments-app", icon: CreditCard },
+  { label: "SchedulingApp", href: "/dashboard/scheduling-app", icon: Calendar },
+  { label: "FeedbackApp", href: "/dashboard/feedback-app", icon: MessageSquare },
 ];
 
 export default function DashboardLayout({
@@ -49,12 +56,13 @@ export default function DashboardLayout({
               <Link
                 key={tab.href}
                 href={tab.href}
-                className={`px-6 py-3 rounded-2xl font-semibold capitalize transition-all ${
+                className={`px-6 py-3 rounded-2xl font-semibold capitalize transition-all inline-flex items-center gap-2 ${
                   isActive
                     ? "bg-domus-primary text-white shadow"
                     : "text-domus-text hover:bg-domus-secondary"
                 }`}
               >
+                <tab.icon className="w-4 h-4" />
                 {tab.label}
               </Link>
             );
