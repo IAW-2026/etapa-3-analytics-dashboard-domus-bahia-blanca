@@ -35,7 +35,13 @@ export default function HourlyDemandChart({ data }: HourlyDemandChartProps) {
             <XAxis dataKey="hour" tickLine={false} axisLine={false} />
             <YAxis allowDecimals={false} tickLine={false} axisLine={false} />
             <Tooltip cursor={{ fill: chartColors.accent }} />
-            <Bar dataKey="count" fill={chartColors.primary} radius={[8, 8, 0, 0]} />
+            <Bar
+              dataKey="count"
+              fill={chartColors.primary}
+              radius={[8, 8, 0, 0]}
+              animationDuration={850}
+              animationEasing="ease-out"
+            />
           </BarChart>
         </ResponsiveContainer>
       </div>

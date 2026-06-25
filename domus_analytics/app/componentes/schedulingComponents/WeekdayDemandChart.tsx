@@ -39,6 +39,8 @@ export default function WeekdayDemandChart({ data }: WeekdayDemandChartProps) {
               dataKey="count"
               fill={chartColors.primarySoft}
               radius={[8, 8, 0, 0]}
+              animationDuration={850}
+              animationEasing="ease-out"
             />
           </BarChart>
         </ResponsiveContainer>

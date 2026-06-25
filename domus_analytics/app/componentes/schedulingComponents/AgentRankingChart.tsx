@@ -34,7 +34,7 @@ export default function AgentRankingChart({
 
       <div className="grid gap-8 lg:grid-cols-2">
         <RankingBlock title="Mes actual" data={monthData} color={chartColors.primary} />
-        <RankingBlock title="Anio actual" data={yearData} color={chartColors.primarySoft} />
+        <RankingBlock title="Año actual" data={yearData} color={chartColors.primarySoft} />
       </div>
     </section>
   );
@@ -69,7 +69,13 @@ function RankingBlock({
               axisLine={false}
             />
             <Tooltip cursor={{ fill: chartColors.accent }} />
-            <Bar dataKey="count" fill={color} radius={[0, 8, 8, 0]} />
+            <Bar
+              dataKey="count"
+              fill={color}
+              radius={[0, 8, 8, 0]}
+              animationDuration={850}
+              animationEasing="ease-out"
+            />
           </BarChart>
         </ResponsiveContainer>
       </div>

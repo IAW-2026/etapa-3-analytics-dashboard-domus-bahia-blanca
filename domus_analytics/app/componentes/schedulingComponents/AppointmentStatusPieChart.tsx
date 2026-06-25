@@ -19,13 +19,15 @@ const STATUS_COLORS = [
   chartColors.primary,
   chartColors.primarySoft,
   chartColors.primaryMuted,
-  "hsl(var(--primary) / 0.82)",
-  "hsl(var(--primary) / 0.56)",
+  chartColors.terracotta,
+  chartColors.brown,
 ];
 
 export default function AppointmentStatusPieChart({
   data,
 }: AppointmentStatusPieChartProps) {
+  const total = data.reduce((sum, item) => sum + item.count, 0);
+
   return (
     <section className={cardClassName} style={chartThemeStyle}>
       <div className="mb-5">
@@ -37,7 +39,15 @@ export default function AppointmentStatusPieChart({
         </p>
       </div>
 
-      <div className="h-72">
+      <div className="relative h-72">
+        <div className="pointer-events-none absolute left-1/2 top-[43%] z-10 -translate-x-1/2 -translate-y-1/2 text-center">
+          <p className="text-3xl font-bold leading-none text-domus-text">
+            {total}
+          </p>
+          <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-domus-textSoft">
+            turnos
+          </p>
+        </div>
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
@@ -47,6 +57,8 @@ export default function AppointmentStatusPieChart({
               innerRadius={58}
               outerRadius={96}
               paddingAngle={3}
+              animationDuration={850}
+              animationEasing="ease-out"
             >
               {data.map((item, index) => (
                 <Cell

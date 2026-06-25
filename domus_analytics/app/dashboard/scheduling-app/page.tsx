@@ -4,6 +4,7 @@ import {
   getCompletedVisitsRanking,
   getHourlyDemand,
   getLastMonthAppointmentsByStatus,
+  getTopVisitedProperties,
   getWeekdayDemand,
 } from "@/app/lib/schedulingAnalytics";
 
@@ -16,12 +17,14 @@ export default async function SchedulingAppPage() {
     completedVisitsRanking,
     agentCount,
     lastMonthAppointmentsByStatus,
+    topVisitedProperties,
   ] = await Promise.all([
     getHourlyDemand(),
     getWeekdayDemand(),
     getCompletedVisitsRanking(),
     getAgentCount(),
     getLastMonthAppointmentsByStatus(),
+    getTopVisitedProperties(),
   ]);
 
   return (
@@ -31,6 +34,7 @@ export default async function SchedulingAppPage() {
       completedVisitsRanking={completedVisitsRanking}
       agentCount={agentCount}
       lastMonthAppointmentsByStatus={lastMonthAppointmentsByStatus}
+      topVisitedProperties={topVisitedProperties}
     />
   );
 }

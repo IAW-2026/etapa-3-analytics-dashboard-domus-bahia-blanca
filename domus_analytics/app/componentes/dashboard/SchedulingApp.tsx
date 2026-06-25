@@ -4,12 +4,14 @@ import AgentCountCard from "@/app/componentes/schedulingComponents/AgentCountCar
 import AgentRankingChart from "@/app/componentes/schedulingComponents/AgentRankingChart";
 import AppointmentStatusPieChart from "@/app/componentes/schedulingComponents/AppointmentStatusPieChart";
 import HourlyDemandChart from "@/app/componentes/schedulingComponents/HourlyDemandChart";
+import TopVisitedPropertiesCard from "@/app/componentes/schedulingComponents/TopVisitedPropertiesCard";
 import WeekdayDemandChart from "@/app/componentes/schedulingComponents/WeekdayDemandChart";
 
 import type {
   AgentRankingDatum,
   AppointmentStatusDatum,
   HourlyDemandDatum,
+  TopVisitedPropertyDatum,
   WeekdayDemandDatum,
 } from "@/app/lib/schedulingAnalytics";
 
@@ -22,6 +24,7 @@ type SchedulingAppProps = {
   };
   agentCount: number;
   lastMonthAppointmentsByStatus: AppointmentStatusDatum[];
+  topVisitedProperties: TopVisitedPropertyDatum[];
 };
 
 export default function SchedulingApp({
@@ -30,6 +33,7 @@ export default function SchedulingApp({
   completedVisitsRanking,
   agentCount,
   lastMonthAppointmentsByStatus,
+  topVisitedProperties,
 }: SchedulingAppProps) {
   return (
     <div className="space-y-6">
@@ -55,6 +59,8 @@ export default function SchedulingApp({
         monthData={completedVisitsRanking.month}
         yearData={completedVisitsRanking.year}
       />
+
+      <TopVisitedPropertiesCard data={topVisitedProperties} />
 
       <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
         <AgentCountCard count={agentCount} />
