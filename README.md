@@ -13,6 +13,10 @@ Tablero que centraliza las métricas de todas las aplicaciones del ecosistema **
 
 **Deploy:** [https://etapa-3-analytics-dashboard-domus-b.vercel.app/dashboard/buyer-app](https://etapa-3-analytics-dashboard-domus-b.vercel.app/dashboard/buyer-app)
 
+* **Usuario Administrador (Admin):**
+  * **Email:** `admin+clerk_test@iaw.com`
+  * **Contraseña:** `iawuser#`
+
 ## SellerApp
 
 Datos sobre propiedades y vendedores:
