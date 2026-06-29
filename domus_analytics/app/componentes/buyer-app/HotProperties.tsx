@@ -6,6 +6,7 @@ interface HotPropertiesProps {
 }
 
 export default function HotProperties({ propiedades }: HotPropertiesProps) {
+  const buyerUrl = process.env.BUYER_APP_BASE_URL || "https://domus-buyer-app.vercel.app";
   return (
     <div className="rounded-xl border border-gray-200 bg-white shadow-sm col-span-1 md:col-span-1 lg:col-span-4 flex flex-col p-6 min-w-0">
       <style dangerouslySetInnerHTML={{__html: `
@@ -33,8 +34,10 @@ export default function HotProperties({ propiedades }: HotPropertiesProps) {
                 <div className="flex items-center gap-3 flex-1 min-w-0">
                   <span className="text-sm font-black text-domus-primary w-4 shrink-0">{idx + 1}.</span>
                   <Link 
-                    href={`/property/${prop.propiedad_id}`}
+                    href={`${buyerUrl}/property/${prop.propiedad_id}`}
                     title={prop.propiedad_id}
+                    target="_blank" 
+                    rel="noopener noreferrer"
                     className="flex-1 block truncate text-sm font-mono px-4 py-1.5 rounded-full border border-domus-primary/40 text-domus-primary bg-transparent transition-all duration-300 hover-nuclear cursor-pointer"
                   >
                     {prop.propiedad_id}
