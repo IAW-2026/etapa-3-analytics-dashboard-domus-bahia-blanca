@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { clerkClient } from '@clerk/nextjs/server';
 
 export const dynamic = 'force-dynamic';
 
@@ -7,7 +7,6 @@ interface Props {
   searchParams: Promise<{ view?: string; year?: string }>;
 }
 
-// Interfaces para tipar la respuesta de la API de Payments
 interface TransaccionExterna {
   id: string;
   fecha: string;
@@ -60,6 +59,28 @@ export default async function PaymentsApp({ searchParams }: Props) {
   const { año_seleccionado, años_disponibles } = meta;
 
   const maxMonto = Math.max(...chart_data.map(d => d.monto), 1) * 1.15;
+
+  const vendedoresIdsUnicos = Array.from(new Set(transacciones.map(t => t.vendedor_id)));
+  const nombresVendedores = new Map<string, string>();
+
+  if (vendedoresIdsUnicos.length > 0) {
+    try {
+      const client = await clerkClient(); 
+      const usuariosClerk = await client.users.getUserList({
+        userId: vendedoresIdsUnicos,
+      });
+
+      usuariosClerk.data.forEach(user => {
+        const nombreCompleto = `${user.firstName || ''} ${user.lastName || ''}`.trim();
+        nombresVendedores.set(
+          user.id, 
+          nombreCompleto || user.emailAddresses[0]?.emailAddress || user.id
+        );
+      });
+    } catch (error) {
+      console.error("Error al obtener usuarios de Clerk:", error);
+    }
+  }
 
   return (
     <div className="min-h-screen bg-[var(--color-domus-bg)] p-4 md:p-8 text-[var(--color-domus-text)] font-sans">
@@ -146,7 +167,7 @@ export default async function PaymentsApp({ searchParams }: Props) {
           </div>
         </section>
 
-        {/* TABLA HISTÓRICA */}
+        {/* TABLA HISTORICA */}
         <section className="card overflow-hidden animate-fade-up" style={{ animationDelay: '200ms' }}>
 
           <div className="bg-[var(--color-domus-primarySoft)] px-6 py-4 font-bold text-white text-[10px] uppercase tracking-widest">
@@ -172,7 +193,7 @@ export default async function PaymentsApp({ searchParams }: Props) {
                     <td className="px-6 py-4 font-bold text-[var(--color-domus-primary)]">{t.plan}</td>
                     <td className="px-6 py-4 font-black text-[var(--color-domus-terracota)]">${t.monto.toFixed(2)}</td>
                     <td className="px-6 py-4 text-right font-mono text-[10px] text-[var(--color-domus-textSoft)] max-w-[150px] truncate" title={t.vendedor_id}>
-                      {t.vendedor_id}
+                      {nombresVendedores.get(t.vendedor_id) || t.vendedor_id}
                     </td>
                   </tr>
                 ))}
